@@ -67,7 +67,7 @@ class SqlRelationsApplicationTests {
 				.filter(nurse1 -> nurse1.getProficiency().equals("Cardiology"))
 				.collect(Collectors.toList()).get(0);
 
-		assertNotNull(nurse);
+		assertNotNull(foundNurse);
 	}
 
 	@DisplayName("Nurse tablosu mevcut mu ? Doğru oluşturulmuş mu ?")
@@ -147,7 +147,7 @@ class SqlRelationsApplicationTests {
 
 		List<Operation> operationList = operationRepository.findAll();
 		Operation foundOperation = operationList.stream()
-				.filter(operation1 -> operation1.getDoctorId() == 1)
+				.filter(operation1 -> operation1.getDoctorId() == savedDoctor.getId())
 				.collect(Collectors.toList()).get(0);
 
 		assertNotNull(foundOperation);
